@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ztretterath/PokeShow#readme",
   "dependencies": {
+    "angular": "^1.6.1",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
