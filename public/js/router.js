@@ -10,6 +10,18 @@
         url: '/',
         templateUrl: '../partials/landing.html'
       })
+      .state('private', {
+        url: '/pssst',
+        templateUrl: '../partials/private.html'
+      })
+      .state('login', {
+        url: '/login',
+        templateUrl: '../partials/login.html'
+      })
+      .state('profile', {
+        url: '/profile',
+        templateUrl: '../partials/profile.html'
+      })
 
     $urlRouterProvider.otherwise('/');
   }
