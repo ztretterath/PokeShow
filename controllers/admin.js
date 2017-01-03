@@ -41,6 +41,34 @@ router.post('/addCard', function(req, res){
   })
   .catch(function(err){
     console.log(err);
+  });
+});
+
+router.delete('/removeCard/:cardId', function(req, res){
+  var user = req.session.passport.user;
+  Admin.findOne({username: user}).exec()
+  .then(function(user){
+    var card = user.cards.id(req.params.cardId);
+    card.remove();
+    return user.save();
+  })
+  .then(function(user){
+    res.json({user: user})
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+})
+
+router.get('/getCards', function(req, res){
+  var user = req.session.passport.user;
+  Admin.find({username: user}).exec()
+  .then(function(user){
+    var cards = user[0].cards;
+    res.json({cards: cards})
+  })
+  .catch(function(err){
+    console.log(err);
   })
 })
 

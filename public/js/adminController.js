@@ -46,6 +46,37 @@
       })
       .then(function(card){
         self.currentAdmin.cards.push(card)
+        self.getCards();
+      })
+      .catch(function(err){
+        console.log(err);
+      })
+    }
+
+//Allows for admin to delete new instance of card
+    self.removeCard = function(card){
+      return $http({
+        url: `/admin/removeCard/${card._id}`,
+        method: 'DELETE',
+        data: card
+      })
+      .then(function(card){
+        self.getCards();
+      })
+      .catch(function(err){
+        console.log(err);
+      })
+    }
+
+//Serves as a means for immediate feedback on the front end
+    self.getCards = function(cards) {
+      return $http({
+        url: '/admin/getCards',
+        method: 'GET',
+        data: cards
+      })
+      .then(function(res) {
+        self.currentAdmin.cards = res.data.cards
       })
       .catch(function(err){
         console.log(err);

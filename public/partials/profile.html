@@ -4,5 +4,9 @@
   <button type="submit">Submit</button>
 </form>
 <ul>
-  <li ng-repeat='cards in admin.currentAdmin.cards'></li>
+  <li ng-repeat='card in admin.currentAdmin.cards'>{{card.name}}
+    <form ng-submit='admin.removeCard(card)'>
+      <button type="submit">Remove</button>
+    </form>
+  </li>
 </ul>
