@@ -1,1 +1,8 @@
 <h1>Welcome Back {{admin.currentAdmin.username}}!</h1>
+<form ng-submit='admin.addCard(card)'>
+  <input type="text" placeholder='New Image' ng-model="card.name">
+  <button type="submit">Submit</button>
+</form>
+<ul>
+  <li ng-repeat='cards in admin.currentAdmin.cards'></li>
+</ul>

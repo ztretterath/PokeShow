@@ -27,4 +27,21 @@ router.post('/login', passport.authenticate('local'), function(req, res){
   });
 });
 
+router.post('/addCard', function(req, res){
+  var user = req.session.passport.user;
+  Admin.find({username: user}).exec()
+  .then(function(user){
+    user[0].cards.push({
+      name: req.body.name
+    })
+    return user[0].save();
+  })
+  .then(function(user){
+    res.json({user: user});
+  })
+  .catch(function(err){
+    console.log(err);
+  })
+})
+
 module.exports = router

@@ -2,7 +2,7 @@
   angular.module('PokeShow', ['ui.router'])
   .config(MainRouter);
 
-  MainRouter.$inject['$stateProvider', '$urlRouterProvider']
+  MainRouter.$inject = ['$stateProvider', '$urlRouterProvider']
 
   function MainRouter($stateProvider, $urlRouterProvider) {
     $stateProvider
